@@ -9,17 +9,26 @@
   </head>
 
   <body>
-    <div class="alert-box" id="hello">
-      알림창
-      <button class="close-button" onclick="closeButton('none')">닫기</button>
+    <div class="alertBox" id="hello">
+      <p class="alert">알림창</p>
+      <button class="closeButton">닫기</button>
     </div>
-    <button onclick="closeButton('block')">버튼</button>
+    <button onclick="clickButton('아이디를 입력하세요')">버튼1</button>
+    <button onclick="clickButton('비번을 입력하세요')">버튼2</button>
 
     <script>
-      function closeButton(hole) {
-        document.getElementById("hello").style.display = hole;
+      function clickButton(k) {
+        document.getElementsByClassName("alert")[0].innerText = k;
+        document.getElementsByClassName("alertBox")[0].style.display = "block";
       }
-      test;
+      document
+        .getElementsByClassName("closeButton")[0]
+        .addEventListener("click", function () {
+          document.getElementsByClassName("alertBox")[0].style.display = "none";
+        });
+
+      // function closeButton(i) {
+      //   document.getElementsByClassName("alert-box")[0].style.display = i;}
       // closeButton("block");
       // closeButton("none");
 
