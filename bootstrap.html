@@ -91,7 +91,7 @@
       // alert(a[0].value);
     </script>
 
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
         <button class="badge bg-dark">Dark🔄</button>
@@ -108,8 +108,10 @@
         count += 1;
         if (count % 2 == 1) {
           $(".badge").html("Light🔄");
+          $("body").addClass("dark");
         } else {
           $(".badge").html("Dark🔄");
+          $("body").removeClass("dark");
         }
       }); //light와 dark 메세지 바뀌는 코드
     </script>
