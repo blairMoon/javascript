@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
 
   <body>
     <div class="alertBox" id="hello">
       <p class="alert">알림창</p>
-      <button class="closeButton">닫기</button>
+      <button id="closeButton">닫기</button>
     </div>
     <button onclick="clickButton('아이디를 입력하세요')">버튼1</button>
     <button onclick="clickButton('비번을 입력하세요')">버튼2</button>
@@ -22,19 +22,10 @@
         document.getElementsByClassName("alertBox")[0].style.display = "block";
       }
       document
-        .getElementsByClassName("closeButton")[0]
+        .getElementById("closeButton")
         .addEventListener("click", function () {
-          document.getElementsByClassName("alertBox")[0].style.display = "none";
+          document.getElementById("hello").style.display = "none";
         });
-
-      // function closeButton(i) {
-      //   document.getElementsByClassName("alert-box")[0].style.display = i;}
-      // closeButton("block");
-      // closeButton("none");
-
-      // function openButton() {
-      //   document.getElementById("hello").style.display = "block";
-      // }dfds
     </script>
   </body>
 </html>
