@@ -19,7 +19,7 @@
     <title>두번째 실습</title>
   </head>
   <body>
-    <div class="black-bg show-modal">
+    <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
         <form action="success.html">
@@ -32,6 +32,24 @@
           <button type="submit" class="btn btn-primary">전송</button>
           <button type="button" class="btn btn-danger" id="close">닫기</button>
         </form>
+        <script>
+          document
+            .querySelector(".black-bg")
+            .addEventListener("click", function (e) {
+              if (e.target == document.querySelector(".black-bg")) {
+                document.querySelector(".black-bg").classList.remove("shown");
+              }
+              //document.querySelector() 결과랑 $() 결과는 다르게 생김
+              //따라서 같다고 비교하기 어려움
+              //만약 제이쿼리로 비교하고 싶다면 $(e.target) == $(".black-bg") 이렇게 하는 것도 방법
+              // e.target; //유저가 실제로 누른거 (뒤에 요소 다 무시하고)
+              // e.currentTarget; //이벤트 리스너 달린 곳 (this)
+              // this;
+              // e.preventDefault(); // 이벤트 기본동작 막아줌  ex) click,submit
+              // e.stopPropagation(); // 내 상위요소로 이벤트 버블링하는거 막아줌
+            });
+        </script>
+
         <script>
           $("form").on("submit", function () {
             //"click"도 가능

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link href="index.css" rel="stylesheet" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <title>세번째 실습</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <ul class="list">
+        <li class="tab-button" data-id="0">Products</li>
+        <!--셀렉터.dataset.자료이름-->
+        <li class="tab-button orange" data-id="1">Information</li>
+        <li class="tab-button" data-id="2">Shipping</li>
+      </ul>
+      <div class="tab-content">
+        <p>상품설명입니다. Product</p>
+      </div>
+      <div class="tab-content show">
+        <p>스펙설명입니다. Information</p>
+      </div>
+      <div class="tab-content">
+        <p>배송정보입니다. Shipping</p>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <div class="card p-3">상품 명/가격</div>
+      <span class="hi">hi</span>
+    </div>
+
+    <script>
+      //client-side rendering 방식
+      //데이터바인딩 : html에 데에터꽂아넣기
+      let car2 = { name: "소나타", price: [50000, 30000, 40000] };
+      document.querySelector(".card").innerHTML = car2.name + "/" + car2.price;
+      document.querySelector(".hi").innerHTML = car2.price[0];
+
+      //let car = ["소나타", 50000, "white"];
+      // car[3] = "아반떼"; //추가하기
+
+      // console.log(car2["name"]); // 자료부르는 방법 (이건는 []안에 변수넣는거 가능)
+      // console.log(car2.name); //이거는 변수 넣는거 불가능 오로지 key만 가능
+      // car2.price = 60000; //수정하는 법
+
+      // //array는 순서가 있음
+      // object는 순서가 없이 대신 이름이 있음
+    </script>
+
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select class="form-select mt-2" id="kind">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+      <select class="form-select mt-2 form-hide" id="size">
+        <option>95</option>
+        <option>100</option>
+        <option>105</option>
+      </select>
+    </form>
+    <script>
+      // select 에서 선택한거 가져오는거 input 태그 사용하면댐 !!
+      $(".form-select")
+        .eq(0)
+        .on("input", function () {
+          let value = $("#kind").val();
+          if (value == "셔츠") {
+            $(".form-select").eq(1).removeClass("form-hide"); //e.currnetTarget 이나 this로 변경하면 축약 가능
+          }
+        });
+
+      // $(".form-select")
+      //   .eq(0)
+      //   .on("input", function () {
+      //     var value = $(".form-select".eq(0).val());
+      //     if (value == "셔츠") {
+      //       $(".form-select").eq(1).addClass("show");
+      //     }
+      //   });
+    </script>
+
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
