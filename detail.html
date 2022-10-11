@@ -64,24 +64,69 @@
       <select class="form-select mt-2" id="kind">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
       <select class="form-select mt-2 form-hide" id="size">
-        <option>95</option>
-        <option>100</option>
-        <option>105</option>
+        <option class="shirtSize">95</option>
+        <option class="shirtSize">100</option>
+        <option class="shirtSize">105</option>
       </select>
     </form>
+    <div id=" test"></div>
     <script>
+      let a = document.createElement("p");
+      a.innerHTML = "안녕";
+      document.querySelector("#test").appendChild(a); //id test안에 a를 추가해주는 코드
+
+      document.querySelector("#test").insertAdjacentHTML("beforeend", a); //insertAdjacentHTML 문자형 html을 넣어주는 함수
+      //beforeend 안쪽 맨 밑
+      $(".form-select").append(a);
+
+      //createElement 이게 insertAdjacentHTML 이거보다 조금 더 빠름 (큰 차이는 없음 쉬운걸로 고고 )
+    </script>
+    <script>
+      const pants = [28, 30, 32, 34];
+      const shirts = [90, 95, 100, 105, 110];
       // select 에서 선택한거 가져오는거 input 태그 사용하면댐 !!
+
+      let jeanTag = `<option class="jeanSize">25</option>
+        <option class="jeanSize">26</option>`;
+      let shirtTag = document.querySelectorAll(".shirtSize");
+      let hatTag = `<option class="hatSize">one-size</option>`;
+      console.log(shirtTag);
       $(".form-select")
         .eq(0)
         .on("input", function () {
           let value = $("#kind").val();
-          if (value == "셔츠") {
-            $(".form-select").eq(1).removeClass("form-hide"); //e.currnetTarget 이나 this로 변경하면 축약 가능
-          }
-        });
 
+          if (value == "모자") {
+            $(".form-select").eq(1).removeClass("form-hide");
+            $(".form-select").eq(1).html("");
+            $(".form-select").eq(1).html(hatTag);
+          }
+
+          if (value == "셔츠") {
+            $(".form-select").eq(1).removeClass("form-hide");
+            //e.currnetTarget 이나 this로 변경하면 축약 가능
+            //$(".jeanSize").remove();
+            $(".form-select").eq(1).html("");
+            $(".form-select").eq(1).html(shirtTag);
+          } else if (value == "바지") {
+            $(".form-select").eq(1).removeClass("form-hide");
+            //$(".shirtSize").detach(); //원래 있던 항목 삭제
+            $(".form-select").eq(1).html("");
+            pants.forEach((i) => {
+              $(".form-select").eq(1).append(`<option>${i}</option>`);
+            });
+          }
+          // document
+          // .querySelector("#size")
+          // .insertAdjacentHTML("beforeend", jeanTag);
+        });
+      const obj = { name: "kim", age: 20 };
+      for (var key in obj) {
+        console.log(obj[key]);
+      }
       // $(".form-select")
       //   .eq(0)
       //   .on("input", function () {
