@@ -130,3 +130,7 @@ ul.list::after {
 .disabled {
   display: none;
 }
+
+.btn-danger {
+  margin-bottom: 10px;
+}
