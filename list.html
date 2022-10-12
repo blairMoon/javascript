@@ -10,7 +10,7 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
-    <link href="index.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet" />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -47,6 +47,7 @@
     </div>
 
     <script>
+      /*
       var products = [
         { id: 0, price: 70000, title: "Blossom Dress" },
         { id: 1, price: 50000, title: "Springfield Shirt" },
@@ -58,6 +59,37 @@
         document.querySelectorAll(".card-body p")[i].innerHTML =
           "가격:" + products[i].price;
       }
+    </script>
+    <script>
+      /*
+      $.post("https://codingapple1.github.io/hello.txt", { name: "kim" }).done(
+        function (data) {
+          console.log(data);
+        }
+      );
+      데이터보내는 방법*/
+      /* 
+      $.get("https://codingapple1.github.io/hello.txt")
+        .done(function (data) {
+          console.log(data);
+        })
+        .fail(function () {
+          console.log("실패함");
+        });
+      $.get("https://codingapple1.github.io/price.json").done(function (data) {
+        console.log(data.price);
+      });
+
+      fetch("https://codingapple1.github.io/price.json")
+      .then((res) =>res.json() //받아온 json을 object로 바꿔주는 기능
+      .then((data) => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.log(error)
+        });
+      );
+      */
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"

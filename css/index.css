@@ -127,3 +127,6 @@ ul.list::after {
 .form-hide {
   display: none;
 }
+.disabled {
+  display: none;
+}

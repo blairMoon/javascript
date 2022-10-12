@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link href="./css/index.css" rel="stylesheet" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <title>네번째 실습</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row"></div>
+    </div>
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+    <script>
+      var products = [
+        { id: 0, price: 70000, title: "Blossom Dress" },
+        { id: 1, price: 50000, title: "Springfield Shirt" },
+        { id: 2, price: 60000, title: "Black Monastery" },
+      ];
+
+      function addProduct(products) {
+        products.forEach((i) => {
+          var newProducts = ` <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${i.title}</h5>
+          <p>가격 : ${i.price}</p>
+        </div>`;
+          $(".row").append(newProducts);
+        });
+      }
+      addProduct(products);
+    </script>
+    <script>
+      let cnt = 0;
+      document.getElementById("more").addEventListener("click", () => {
+        if (cnt == 0) {
+          fetch("https://codingapple1.github.io/js/more1.json").then((res) =>
+            res
+              .json()
+              .then((newData) => {
+                addProduct(newData);
+                cnt += 1;
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+          );
+        } else if (cnt == 1) {
+          fetch("https://codingapple1.github.io/js/more2.json").then((res) =>
+            res
+              .json()
+              .then((newData) => {
+                addProduct(newData);
+                $("#more").addClass("disabled");
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+          );
+        }
+      });
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
