@@ -58,6 +58,7 @@
           <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>${i.title}</h5>
           <p>가격 : ${i.price}</p>
+          <button class="buy">구매</button>
         </div>`;
           $(".row").append(newProducts);
         });
@@ -65,10 +66,8 @@
 
       //6만원 이하 상품만 보기
       document.getElementById("price6Sort").addEventListener("click", () => {
-        let underPrice = products.filter(function (a) {
-          return a.price <= 60000;
-        });
-
+        let underPrice = products.filter((a) => a.price <= 60000);
+        //arrow 함수에서 return문과 중괄호 삭제 가능 (중괄호밖에 없다면 이렇게 표현 가능하다 )
         $(".row").html(""); //비워놓는 작업
         underPrice.forEach((i) => {
           var newProducts = ` <div class="col-sm-4">
@@ -91,10 +90,23 @@
           <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>${i.title}</h5>
           <p>가격 : ${i.price}</p>
+          <button class="buy">구매</button>
         </div>`;
           $(".row").append(newProducts);
         });
       });
+
+      localStorage.setItem("이름", "ohsubin"); //저장하기
+      localStorage.getItem("이름"); //데이터 꺼내오기
+      localStorage.removeItem("이름"); //데이터 삭제하기
+      let arr = [1, 2, 3];
+      let newArray = JSON.stringify(arr);
+      localStorage.setItem("num", newArray); //데이터를 객체,배열 자체로 저장하는 방법
+      //문자로 바꾸는거임
+      let outArray = localStorage.getItem("num");
+
+      console.log(JSON.parse(outArray)[0]); //다시 배열로 바꾸는 방법
+
       // 추가 함수 코드
       function addProduct(products) {
         products.forEach((i) => {
@@ -102,11 +114,25 @@
           <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>${i.title}</h5>
           <p>가격 : ${i.price}</p>
+          <button class="buy">구매</button>
         </div>`;
           $(".row").append(newProducts);
         });
       }
       addProduct(products);
+    </script>
+    <script>
+      //장바구니 기능 구현
+      $(".buy").click(function (e) {
+        var title = $(e.target).siblings("h5").text();
+        if (localStorage.getItem("cart") != null) {
+          var cartArray = JSON.parse(localStorage.cart);
+          cartArray.push(title);
+          localStorage.setItem("cart", JSON.stringify(cartArray));
+        } else {
+          localStorage.setItem("cart", JSON.stringify([title]));
+        }
+      });
     </script>
     <script>
       // 더보기 버튼
