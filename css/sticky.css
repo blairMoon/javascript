@@ -1,0 +1,19 @@
+.grey {
+  background-color: lightgray;
+  height: 2000px;
+  margin-top: 500px;
+}
+.image {
+  float: right;
+  width: 400px;
+  position: sticky;
+  top: 100px;
+}
+/* position:sticky 는 fixed랑 유사한 개념인데 
+조건부 fixed라고 생각하면 된다 (처음부터가 아니라 이미지가 보이기 시작할 때부터 fixed됨 스크롤이 부모div박스 넘어가면 fixed 해제됨)
+ */
+.text {
+  float: left;
+  width: 300px;
+  font-size: 20px;
+}
