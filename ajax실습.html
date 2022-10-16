@@ -123,14 +123,23 @@
     </script>
     <script>
       //장바구니 기능 구현
+      var cartCount = 0;
+
       $(".buy").click(function (e) {
         var title = $(e.target).siblings("h5").text();
         if (localStorage.getItem("cart") != null) {
           var cartArray = JSON.parse(localStorage.cart);
-          cartArray.push(title);
+          for (var i = 0; i < cartArray.legth; i++) {
+            if (cartArray[i] != title) {
+              console.log(title);
+              cartArray.push(cartArray);
+              cartArray.push(cartCount);
+            }else
+          }
           localStorage.setItem("cart", JSON.stringify(cartArray));
         } else {
-          localStorage.setItem("cart", JSON.stringify([title]));
+          cartCount += 1;
+          localStorage.setItem("cart", JSON.stringify([title], cartCount));
         }
       });
     </script>
